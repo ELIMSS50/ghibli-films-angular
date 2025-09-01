@@ -1,0 +1,15 @@
+<div class="films-grid">
+    @for (film of films(); track film.id) {
+    <div class="film-card">
+        <img src="{{film.image}}" alt="{{film.title}}" />
+        <div class="film-card-content">
+            <h2>{{film.title}}</h2>
+            <p>{{film.description}}</p>
+            <a href="{{film.url}}" target="_blank">Más info</a>
+        </div>
+    </div>
+    }
+    @empty {
+    <p>No hay películas</p>
+    }
+</div>
