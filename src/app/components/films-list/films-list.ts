@@ -1,9 +1,10 @@
 import { Component, signal, WritableSignal } from '@angular/core';
 import { Film } from '../../interfaces/film.interface';
+import { FilmCard } from "../film-card/film-card";
 
 @Component({
   selector: 'app-films-list',
-  imports: [],
+  imports: [FilmCard],
   templateUrl: './films-list.html',
   styleUrl: './films-list.css'
 })
