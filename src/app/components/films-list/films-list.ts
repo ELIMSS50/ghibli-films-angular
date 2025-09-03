@@ -96,4 +96,11 @@ export class FilmsList {
       "url": "https://ghibliapi.vercel.app/films/90b72513-afd4-4570-84de-a56c312fdf81"
     }
   ]);
+
+  deleteFilm(id: string) {
+    console.log(`Eliminando película con ID: ${id}... desde el componente padre`);
+    this.films.update(
+      films => films.filter(film => film.id !== id)
+    )
+  }
 }
