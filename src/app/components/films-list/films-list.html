@@ -1,3 +1,10 @@
+<app-films-actions
+  (deleteAll)="deleteAll()"
+  (reload)="reload()"
+  (sortByName)="sortByName()"
+  (invert)="invert()">
+</app-films-actions>
+
 <div class="films-grid">
     @for (film of films(); track film.id) {
         <app-film-card [film]="film" (deleteFilm)="deleteFilm($event)"></app-film-card>
@@ -6,3 +13,6 @@
     <p>No hay películas</p>
     }
 </div>
+
+
+

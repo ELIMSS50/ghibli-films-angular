@@ -1,0 +1,30 @@
+name: Deploy Angular to Firebase Hosting
+
+on:
+  push:
+    branches:
+      - main   # Cambia a tu rama principal si es otra
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'   # o la versión que uses
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Angular
+        run: npm run build -- --configuration production
+
+      - name: Deploy to Firebase Hosting
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+        run: firebase deploy --only hosting --token $FIREBASE_TOKEN
