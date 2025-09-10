@@ -1,5 +1,15 @@
 {
   "projects": {
     "default": "prueba-81fcd"
-  }
+  },
+  "targets": {
+    "prueba-81fcd": {
+      "hosting": {
+        "ghibli-site": [
+          "fir-7b4e4"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }
