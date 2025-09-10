@@ -10,24 +10,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 1️⃣ Clonar el repositorio
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      # 2️⃣ Configurar Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20'
 
+      # 3️⃣ Instalar dependencias del proyecto
       - name: Install dependencies
         run: npm install
 
+      # 4️⃣ Instalar Firebase CLI localmente
       - name: Install Firebase CLI
         run: npm install firebase-tools --save-dev
 
+      # 5️⃣ Build de Angular
       - name: Build Angular
         run: npm run build -- --configuration production
 
+      # 6️⃣ Deploy a Firebase Hosting usando npx y el secret
       - name: Deploy to Firebase Hosting
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-        run: npx firebase deploy --only hosting --token $FIREBASE_TOKEN
+        run: npx firebase deploy --only hosting --token ${{ secrets.FIREBASE_TOKEN }}
