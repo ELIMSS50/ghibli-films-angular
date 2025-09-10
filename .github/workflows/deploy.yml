@@ -21,6 +21,9 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Install Firebase CLI
+        run: npm install firebase-tools --save-dev
+
       - name: Build Angular
         run: npm run build -- --configuration production
 
@@ -28,4 +31,3 @@ jobs:
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
         run: npx firebase deploy --only hosting --token $FIREBASE_TOKEN
-
