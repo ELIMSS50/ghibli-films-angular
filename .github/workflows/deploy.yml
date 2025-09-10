@@ -13,23 +13,24 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20'
 
-      
       - name: Install dependencies
         run: npm install
 
-      
       - name: Install Firebase CLI
         run: npm install firebase-tools --save-dev
-
 
       - name: Build Angular
         run: npm run build -- --configuration production
 
       - name: Deploy to Firebase Hosting
-        run: npx firebase deploy --only hosting --token ${{ secrets.FIREBASE_SERVICE_ACCOUNT_PRUEBA_81FCD}}
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_PRUEBA_81FCD }}
+        run: |
+          echo "$GOOGLE_APPLICATION_CREDENTIALS" > service-account.json
+
+          npx firebase deploy --only hosting --project fir-7b4e4
